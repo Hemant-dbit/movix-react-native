@@ -12,6 +12,7 @@ import {
   Text,
   View,
 } from "react-native";
+import MovieCard from "@/components/MovieCard";
 
 export default function Index() {
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function Index() {
             className="mt-10 self-center"
           />
         ) : moviesError ? (
-          <Text>Error:{moviesError.message}</Text>
+          <Text className="text-red-500 px-5 my-3">Error: {moviesError.message}</Text>
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
@@ -63,13 +64,13 @@ export default function Index() {
               <FlatList
                 data={movies}
                 renderItem={({ item }) => (
-                  <Text className="text-white text-sm">{item.title}</Text>
+                  <MovieCard {...item} />
                 )}
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={3}
                 columnWrapperStyle={{
                   justifyContent: "flex-start",
-                  gap: 20,
+                  gap: 16,
                   paddingRight: 10,
                   marginBottom: 10,
                 }}
