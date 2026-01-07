@@ -8,7 +8,6 @@ const useFetch = <T>(fetchfunction: () => Promise<T>, autofetch = true) => {
 
   const fetchData = async () => {
     try {
-      setData(null);
       setLoading(true);
 
       const result = await fetchfunction();
