@@ -5,7 +5,7 @@ import { images } from "@/constants/images";
 import { fetchMovies } from "@/services/api";
 import { updateSearchCount } from "@/services/appwrite";
 import useFetch from "@/services/useFetch";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 
 const search = () => {
@@ -19,15 +19,11 @@ const search = () => {
     reset,
   } = useFetch(() => fetchMovies({ query: searchQuery }), false);
 
+  //Debounce the search input
   useEffect(() => {
-
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await refetchMovies();
-
-        if (movies?.length > 0 && movies[0]) {
-          await updateSearchCount(searchQuery, movies[0]);
-        }
       } else {
         reset();
       }
@@ -36,8 +32,13 @@ const search = () => {
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
 
-  
-  
+  //Call updateSearchCount only if there are movies in the result
+  useEffect(() => {
+    if (movies?.length! > 0 && movies?.[0]) {
+      updateSearchCount(searchQuery, movies[0]);
+    }
+  }, [movies]);
+
   return (
     <View className="flex-1 bg-primary">
       <Image
@@ -111,6 +112,6 @@ const search = () => {
       />
     </View>
   );
-};;
+};
 
 export default search;
