@@ -1,4 +1,4 @@
-import { Client, Databases, Query, ID } from "react-native-appwrite";
+import { Client, Databases, ID, Query } from "react-native-appwrite";
 
 const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!;
 const PROJECT_ID = process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!;
@@ -98,7 +98,15 @@ export const getSavedMovies = async (): Promise<Movie[] | undefined> => {
       Query.equal("saved", true),
       Query.orderDesc("$createdAt"),
     ]);
-    return result.documents as unknown as Movie[];
+
+    // Map Appwrite documents to Movie type
+    return result.documents.map((doc: any) => ({
+      id: doc.movieId,
+      movieId: doc.movieId,
+      title: doc.title,
+      poster_path:
+        doc.poster_url?.replace("https://image.tmdb.org/t/p/w500", "") || "",
+    })) as Movie[];
   } catch (error) {
     console.error("Error fetching saved movies:", error);
     return undefined;
