@@ -9,11 +9,8 @@ A modern, cross-platform movie discovery application built with React Native and
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Development](#development)
-- [Configuration](#configuration)
-- [Platform Support](#platform-support)
 - [Additional Resources](#additional-resources)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -171,49 +168,6 @@ The application uses a tab-based navigation system with four main sections:
 
 Movie details are rendered using dynamic routing patterns. Navigate to `/movies/[id]` to view detailed information for any specific movie.
 
-### Available Scripts
-
-| Command                 | Description                                   |
-| ----------------------- | --------------------------------------------- |
-| `npm start`             | Start the Expo development server             |
-| `npm run android`       | Launch application on Android emulator/device |
-| `npm run ios`           | Launch application on iOS simulator/device    |
-| `npm run web`           | Launch application in web browser             |
-| `npm run lint`          | Run ESLint for code quality checks            |
-| `npm run reset-project` | Reset to a fresh project state                |
-
-## Configuration
-
-### Application Settings
-
-The main application configuration is located in `app.json`:
-
-- Application metadata (name, slug, version)
-- Platform-specific settings (iOS, Android, Web)
-- Splash screen configuration
-- Performance optimizations:
-  - New Architecture enabled for improved performance
-  - React Compiler experiments enabled
-
-### TypeScript Configuration
-
-The project is fully typed with TypeScript. Configuration is managed in `tsconfig.json` with strict type checking enabled for enhanced code quality and developer experience.
-
-### Build Configuration
-
-- **Babel**: Transpilation configuration in `babel.config.js`
-- **Metro Bundler**: Bundler configuration in `metro.config.js`
-- **ESLint**: Code quality and linting rules in `eslint.config.js`
-
-## Platform Support
-
-Movix is designed to provide a consistent experience across multiple platforms:
-
-| Platform    | Minimum Version       | Features                             |
-| ----------- | --------------------- | ------------------------------------ |
-| **iOS**     | iOS 13.0+             | Full iPhone and iPad support         |
-| **Android** | Android 5.0+ (API 21) | Adaptive icons, full feature support |
-| **Web**     | Modern browsers       | Progressive Web App capabilities     |
 
 ## Additional Resources
 
@@ -235,10 +189,5 @@ Contributions are welcome and appreciated. To contribute:
 
 Please ensure your code follows the project's coding standards and includes appropriate tests where applicable.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
 **Developed with React Native and Expo**
